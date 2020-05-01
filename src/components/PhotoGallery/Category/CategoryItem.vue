@@ -7,7 +7,7 @@
     @click="
       () => {
         toggleMenu();
-        getCategory(name);
+        changeCategory(name);
       }
     "
   >
@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      getCategory: 'CHANGE_CATEGORY',
+      changeCategory: 'CHANGE_CATEGORY',
     }),
     toggleMenu() {
       events.$emit('toggle-menu');
