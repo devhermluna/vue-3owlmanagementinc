@@ -35,6 +35,7 @@ export default {
 
 <style lang="sass" scoped>
 @import '../../assets/sass/variables'
+@import '../../assets/sass/mixins'
 
 .gallery-container
   display: flex
@@ -48,4 +49,7 @@ export default {
   border-radius: $border-radius
   overflow: auto
   padding: $gutter
+
+  +xs
+    width: 100%
 </style>

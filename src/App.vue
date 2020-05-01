@@ -27,7 +27,7 @@ export default {
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
   padding: $gutter
-  background: #18191a
+  background: $color-bg
   height: 100vh
   color: white
 </style>

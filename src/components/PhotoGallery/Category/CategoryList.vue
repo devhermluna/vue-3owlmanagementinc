@@ -31,9 +31,24 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '../../../assets/sass/variables'
+@import '../../../assets/sass/mixins'
+
 .category
   width: 250px
   height: 100%
+
+  +xs
+    position: fixed
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    width: 100%
+    background: $color-bg
+    z-index: 1000
+    padding: 15px 0 15px 15px
+    display: none
 
   &-title
     color: white
@@ -46,6 +61,9 @@ export default {
       weight: 600
     text-transform: uppercase
     letter-spacing: 2px
+
+    +xs
+      margin-bottom: 20px
 
   &-list
     height: calc(100% - 26px)
