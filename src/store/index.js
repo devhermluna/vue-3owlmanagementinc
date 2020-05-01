@@ -35,13 +35,17 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    async CHANGE_CATEGORY({ commit }, category) {
-      commit('CATEGORY', category);
+    async CHANGE_CATEGORY({ commit, state }, category) {
+      if (category === state.category) return;
+
+      const parseCategory = category || defaultCategory;
+
+      commit('CATEGORY', parseCategory);
       commit('LOADING', true);
       commit('ACTIVE');
       try {
         const { body } = await httpClient.photos.search({
-          text: category,
+          text: parseCategory,
           extras: 'url_z,description,owner_name',
         });
         const list = get(body, 'photos.photo') || [];
