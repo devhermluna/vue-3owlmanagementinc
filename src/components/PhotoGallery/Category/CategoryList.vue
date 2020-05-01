@@ -9,12 +9,16 @@
     <button class="btn-close" type="button" @click="toggleMenu">
       <i class="icon ion-md-close" />
     </button>
+    <div class="category-input">
+      <i class="icon ion-ios-search" />
+      <input @input="debounceInput" placeholder="Search" />
+    </div>
     <div class="category-list">
       <CategoryItem
         v-for="item in items"
         :key="item"
         :name="item"
-        :active="item === category"
+        :active="item.toLowerCase() === category.toLowerCase()"
       />
     </div>
   </div>
@@ -22,8 +26,9 @@
 
 <script>
 import CategoryItem from './CategoryItem';
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import events from '../../../common/events';
+import { debounce } from 'lodash';
 
 export default {
   computed: mapState(['category']),
@@ -38,6 +43,12 @@ export default {
     menuActive: Boolean,
   },
   methods: {
+    ...mapActions({
+      changeCategory: 'CHANGE_CATEGORY',
+    }),
+    debounceInput: debounce(function(e) {
+      this.changeCategory(e.target.value);
+    }, 2000),
     toggleMenu() {
       events.$emit('toggle-menu');
     },
@@ -101,8 +112,35 @@ export default {
     +xs
       margin-bottom: 20px
 
+  &-input
+    height: 40px
+    width: 100%
+    padding: 10px 15px
+    background: $color-bg-gallery
+    position: relative
+    border-radius: $border-radius
+    overflow: hidden
+    margin-bottom: 20px
+
+    i
+      position: absolute
+      top: 11px
+
+    input
+      width: 100%
+      border: none
+      position: absolute
+      top: 0
+      right: 0
+      bottom: 0
+      left: 0
+      background: none
+      outline: none
+      padding-left: 40px
+      color: white
+
   &-list
-    height: calc(100% - 26px)
+    height: calc(100% - 86px)
     overflow: auto
     padding-right: 8px
 </style>
