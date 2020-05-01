@@ -58,19 +58,19 @@ export default {
       size: 26px
       weight: 600
     color: white
-    margin-bottom: 15px
     letter-spacing: 1px
 
   &-item
     width: 290px
     border-radius: $border-radius
-    margin-bottom: $gutter
+    margin-top: $gutter
     overflow: auto
 
   &-loader
     display: flex
     flex-wrap: wrap
     margin:
+      top: $gutter
       left: -10px
       right: -10px
 

@@ -4,7 +4,12 @@
       'category-item': true,
       'category-item__active': active,
     }"
-    @click="() => getCategory(name)"
+    @click="
+      () => {
+        toggleMenu();
+        getCategory(name);
+      }
+    "
   >
     {{ name }}
   </div>
@@ -12,6 +17,7 @@
 
 <script>
 import { mapActions } from 'vuex';
+import events from '../../../common/events';
 
 export default {
   props: {
@@ -22,6 +28,9 @@ export default {
     ...mapActions({
       getCategory: 'CHANGE_CATEGORY',
     }),
+    toggleMenu() {
+      events.$emit('toggle-menu');
+    },
   },
 };
 </script>
@@ -41,7 +50,7 @@ export default {
   margin-bottom: 8px
 
   &.category-item__active
-    background: #00947f
+    background: $color-active
     color: white
 
   &:not(.category-item__active):hover

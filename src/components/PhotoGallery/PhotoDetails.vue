@@ -35,6 +35,7 @@ export default {
 
 <style lang="sass" scoped>
 @import '../../assets/sass/variables'
+@import '../../assets/sass/mixins'
 
 .photo-details
   height: 100%
@@ -43,10 +44,16 @@ export default {
   overflow: auto
   margin-right: -$gutter
 
+  +xs
+    flex-direction: column
+
   &-content
     flex: 1
     margin-left: $gutter
     padding-right: $gutter
+
+    +xs
+      margin-left: 0
 
   &-image
     position: sticky
@@ -59,6 +66,11 @@ export default {
       position: center
     border-radius: $border-radius
     padding: $gutter
+
+    +xs
+      width: calc(100% - #{$gutter})
+      margin-bottom: $gutter
+      height: 250px
 
     button.btn-back
       height: 40px
@@ -78,5 +90,5 @@ export default {
         font-size: 20px
 
       &:hover
-        background: #00947f
+        background: $color-active
 </style>
