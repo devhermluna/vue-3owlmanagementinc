@@ -18,9 +18,11 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import '../assets/sass/variables'
+
 .gallery-item-image
   background:
-    color: #4a4c4e
+    color: $color-loader
     size: cover
     position: center
     repeat: no-repeat

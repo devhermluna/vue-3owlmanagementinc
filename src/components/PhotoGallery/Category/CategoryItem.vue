@@ -44,7 +44,7 @@ export default {
     size: 16px
     weight: 600
   cursor: pointer
-  color: #8a8a8a
+  color: $color-category-item
   border-radius: $border-radius
   transition: all 0.15s linear
   margin-bottom: 8px
