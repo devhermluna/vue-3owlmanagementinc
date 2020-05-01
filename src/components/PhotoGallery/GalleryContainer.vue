@@ -72,7 +72,7 @@ export default {
   .gallery
     width: calc(100% - 270px)
     height: 100%
-    background: #242526
+    background: $color-bg-gallery
     border-radius: $border-radius
     overflow: auto
     padding: $gutter
