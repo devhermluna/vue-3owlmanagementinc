@@ -36,7 +36,7 @@ export default new Vuex.Store({
   },
   actions: {
     async CHANGE_CATEGORY({ commit, state }, category) {
-      if (category === state.category) return;
+      if (category === state.category && state.photos.length) return;
 
       const parseCategory = category || defaultCategory;
 
